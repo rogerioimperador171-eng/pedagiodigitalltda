@@ -378,11 +378,21 @@ function PlanResult({
           <p className="mt-1 text-xs text-muted-foreground">Cobrança mensal, cancele quando quiser.</p>
           <button
             type="button"
+            onClick={() => setRenewMsg(true)}
             className="mt-4 w-full rounded-2xl bg-primary px-6 py-4 text-base font-semibold text-primary-foreground"
           >
             Renovar plano
           </button>
+          {renewMsg && (
+            <p
+              role="status"
+              className="mt-4 rounded-xl border border-primary/50 bg-secondary px-4 py-3 text-sm leading-snug"
+            >
+              Para renovar seu plano, entre em contato com o suporte do Pedágio Digital.
+            </p>
+          )}
         </div>
+
       </div>
     </section>
   );
