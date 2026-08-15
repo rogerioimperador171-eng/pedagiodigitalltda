@@ -34,10 +34,11 @@ function Logo({ size = "md" }: { size?: "md" | "lg" }) {
       <img
         src={logoMark}
         alt="Pedágio Digital"
-        width={512}
-        height={512}
-        className={size === "lg" ? "h-14 w-14" : "h-11 w-11"}
+        width={586}
+        height={436}
+        className={size === "lg" ? "h-12 w-auto" : "h-10 w-auto"}
       />
+
       <span
         className={`font-extrabold leading-[0.95] tracking-tight ${
           size === "lg" ? "text-2xl" : "text-xl"
@@ -66,7 +67,7 @@ function Index() {
     return /^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(v);
   }, [plate, foreign]);
 
-  const canSubmit = plateValid && terms && robot;
+  const canSubmit = plateValid && terms;
 
   function handleSubmit() {
     if (!canSubmit) return;
@@ -151,19 +152,26 @@ function Index() {
               className="mt-5 w-full rounded-2xl bg-panel-input px-5 py-5 text-lg font-bold tracking-[0.15em] text-panel-foreground outline-none ring-primary/70 placeholder:font-bold placeholder:text-panel-muted focus:ring-2"
             />
 
-            <label className="mt-5 flex items-center gap-3 text-[0.95rem]">
+            <div
+              onClick={() => setForeign(!foreign)}
+              className="mt-5 flex cursor-pointer items-center gap-3 text-[0.95rem]"
+            >
               <Check checked={foreign} onChange={setForeign} label="Minha placa é estrangeira" />
-              <span>Minha placa é estrangeira</span>
-            </label>
+              <span>Minha placa é estrangeira (opcional)</span>
+            </div>
 
-            <label className="mt-4 flex items-start gap-3 text-[0.95rem] leading-snug">
+            <div
+              onClick={() => setTerms(!terms)}
+              className="mt-4 flex cursor-pointer items-start gap-3 text-[0.95rem] leading-snug"
+            >
               <Check checked={terms} onChange={setTerms} label="Aceito os termos" />
               <span>
                 Li e concordo com os <em className="underline">Termos de uso</em> e{" "}
                 <em className="underline">Políticas de Privacidade</em> da plataforma Pedágio
                 Digital.
               </span>
-            </label>
+            </div>
+
 
             <button
               type="button"
