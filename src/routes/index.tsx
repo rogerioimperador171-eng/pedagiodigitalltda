@@ -300,6 +300,8 @@ function PlanResult({
 }) {
   const time = useCountdown();
   const [copied, setCopied] = useState(false);
+  const [renewMsg, setRenewMsg] = useState(false);
+
 
   async function copy() {
     try {
